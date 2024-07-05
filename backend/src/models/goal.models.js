@@ -1,7 +1,7 @@
 import mongoose, { Schema } from "mongoose";
 
 const goalSchema = new Schema({
-    user:{
+    user:{                                          //id is extracted from the payload in the token
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",
         required: true

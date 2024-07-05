@@ -32,7 +32,7 @@ const updateGoal = asyncHandler(async (req, res) => {
     const user = req.user._id;
 
     const goal = await Goal.findById(id);
-    if (!goal || goal.user.toString() !== user.toString()) {
+    if (!goal || goal.user.toString() !== user.toString()) {   // user (id) is from req.user (middleware) and goal.user (id) is from database
         throw new apiError(404, "Goal not found or unauthorized");
     }
     const updatedGoal = await Goal.findByIdAndUpdate(id, req.body, { new: true });
