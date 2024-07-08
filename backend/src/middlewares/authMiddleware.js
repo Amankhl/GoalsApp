@@ -11,7 +11,7 @@ const protect = asyncHandler(async (req, res, next) => {
             //get token from header
             token = req.headers.authorization.split(" ")[1]
             //verify token
-            const decoded = jwt.verify(token, process.env.JWT_SECRET)   // `verfiy()` will return the payload out of the token e.g., { id: '6684cafd8e2e7a1ee20d6c31', iat: 1719978848, exp: 1720065248 }
+            const decoded = jwt.verify(token, process.env.JWT_SECRET)   // `verfiy()` will return the payload out of the token, in this case we may get { id: '6684cafd8e2e7a1ee20d6c31', iat: 1719978848, exp: 1720065248 } for example.
             // Get user from the token
             // console.log(decoded)
             req.user = await User.findById(decoded.id).select("-password")   // since token always has a payload id you stored while signing a jwt, we can use that to get the user from the database

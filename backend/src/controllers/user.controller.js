@@ -5,7 +5,7 @@ import {User} from "../models/user.models.js";
 import {apiError} from "../utils/apiError.js";
 
 // Generate JWT
-const generateToken = (id) => {
+const generateToken = (id) => {  // whatever parameter you use will become the key for the decoded payload token e.g., if you use _id as the parameter here, the decoded payload will be { _id: '6684e3d10d44179f827dc698', iat: 1720463478, exp: 1720549878 }
     return jwt.sign({ id }, process.env.JWT_SECRET, {expiresIn: "1d"});   //ACCESS_TOKEN_SECRET  = JWT_SECRET
 } // sign(payload, secretOrPrivateKey, [options, callback])  we are giving the `_id` only as the payload
 
